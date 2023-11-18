@@ -1,7 +1,6 @@
 import os 
 from .settings import *
 from .settings import BASE_DIR
-import psycopg2
 
 SECRET_KEY = os.environ['SECRET']
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] 
@@ -24,7 +23,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Database
-"""
 connection_string = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
 parametrs = {pair.split('=')[0]: pair.split('=')[1] for pair in connection_string.split(' ')}
 DATABASES = {
@@ -35,20 +33,6 @@ DATABASES = {
         'USER': parametrs['user'],
         'PASSWORD': parametrs['password'],
     }
-}"""
-
-
-
-connection_string = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
-
-params = psycopg2.parse_connection_string(connection_string)
-
-DATABASES = {
-  'default': {
-      'ENGINE': 'django.db.backends.postgresql',
-      'NAME': params['dbname'],
-      'USER': params['user'],
-      'PASSWORD': params['password'],
-      'HOST': params['host'],
-  }
 }
+
+
