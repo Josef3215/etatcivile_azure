@@ -31,7 +31,7 @@ DATABASES = {
         'NAME': parametrs['dbname'],
         'HOST': parametrs['host'],
         'USER': parametrs['user'],
-        'PASSWORD': parametrs['password'],
+        'PASSWORD': "H21052002y@",
     }
 }
 
