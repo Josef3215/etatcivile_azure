@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    -->
+<link rel="stylesheet" href="{% static 'CSS/stat.css' %}">
+
+<!--Chartjs CDN-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+
+<body>
+    <h1> Statistique : </h1>
+    <div class="grille">
+        <div class="elm">
+            <div class="col-md-8">
+                <canvas id="myChart" width="400" height="100"></canvas>
+                <script>
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: ['Taux de naissance', 'Taux de mariage', 'Taux de deces',],
+                            datasets: [{
+                                label: '# of persons',
+
+                                data: [{{ nbr_persone }}, {{ nbr_mariage }}, {{ nbr_deces }},],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                            borderWidth: 1
+            }]
+                },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+            });
+                </script>
+            </div>
+        </div>
+
+
+        <div class="elm">
+            <div>
+                <canvas id="mChart" width="400" height="100"></canvas>
+                <script>
+                    var ct = document.getElementById('mChart').getContext('2d');
+                    var mChart = new Chart(ct, {
+                        type: 'bar',
+                        data: {
+                            labels: ['homme', 'femme'],
+                            datasets: [{
+                                label: '# of persons',
+
+                                data: [{{ nbr_homme }}, {{ nbr_femme }}],
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+            });
+                </script>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

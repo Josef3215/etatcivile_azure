@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'CSS/show.css' %}">
+<div class="grille">
+    <div class="result">
+        <h4> Acte Mariage : </h4>
+        <ul class="info">
+
+            <li><label>Num Act Mariage : </label>{{data.id}}</li>
+            <li><label>Marie :</label>{{data.marie}}</li>
+            <li><label>Date de Naissance :</label>{{data.marie.date_naiss}}</li>
+            <li><label>Profession : </label>{{data.profession_marie}}</li>
+            <li><label>Mariée : </label>{{data.mariee}}</li>
+            <li><label>Date de Naissance : </label>{{data.mariee.date_naiss}}</li>
+            <li><label>Profession : </label>{{data.profession_mariee}}</li>
+            <li><label>Adresse couple: </label>{{data.domicile}}</li>
+            <li><label>Date Mariage : </label>{{data.date_mariage}}</li>
+            <li><label>Heure Mariage :</label>{{data.heure_mariage}}</li>
+            <li><label>Lieu Mariage </label>{{data.lieu_mariage}}</li>
+            <li><label>Bureau Etat Civile : </label>{{data.BuretatCivile}}</li>
+            <li><label>Témoin 1 :</label>{{data.temoine1}}</li>
+            <li><label>Témoin 2 : </label>{{data.temoine2}}</li>
+
+            <a href="{% url 'extrait_mariage' data.id %}" id="print">imprimer</a>
+
+            <p> {{message}}</p>
+        </ul>
+    </div>
+</div>
+{% endblock %}

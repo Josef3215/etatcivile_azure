@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'CSS/search.css' %}">
+<div class="grille">
+    <div class="elm-grid">
+        <form action='' method="get">
+            <h3> Rechercher Deces </h3>
+            <div class="form-group">
+                <label for="search"> Numéro d'acte de Deces </label>
+                <input type="text" name="num_deces" id="search">
+            </div>
+            <button type="submit"> Recherche </button>
+        </form>
+    </div>
+
+
+
+    <div class="elm-grid" id="result">
+        <h4> Resultat: </h4>
+        <ul class="info">
+
+            {% for deces in data %}
+            <li><label>Num Acte Deces :</label> {{deces.id}}</li>
+            <li><label>Nom et Prenom :</label> {{deces.personedeces}}</li>
+            <li><label>Annonceur :</label> {{deces.annonceur}}</li>
+            <li><label>Date deces :</label> {{deces.date_deces}}</li>
+            <li><label>Heure :</label> {{deces.heure_deces}}</li>
+            <li><label>Lieu :</label> {{deces.lieu_deces}}</li>
+            <li><label>Cause :</label> {{deces.cause_deces}}</li>
+
+            <a href="{% url 'extrait_deces' deces.id %}" id="print">imprimer</a>
+
+
+
+
+
+
+
+            {% endfor %}
+            <p> {{message}}</p>
+        </ul>
+    </div>
+</div>
+{% endblock %}

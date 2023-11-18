@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'CSS/Mariage.css' %}">
+
+
+
+
+<!-- /nav bar -->
+
+<body>
+
+    <div class="main">
+
+        <h1 id="titre"> Enregistrer Mariage</h1>
+        <img src="{% static 'images/mariage.svg' %}" id="logo3">
+        <img src="{% static 'images/logo.svg' %}" id="logo2">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="CONTENT">
+                <div class="form-group">
+                    <label for="requerant1">Nom Prenom Marie : </label>
+                    {{form1.marie}}
+                </div>
+
+                <div class=" form-group">
+                    <label for="proffesion_req1">Profession : </label>
+                    {{form1.profession_marie}}
+                </div>
+                <div class="form-group">
+                    <label for="requerant2">Nom et prenom Mariée </label>
+                    {{ form1.mariee}}
+                </div>
+                <div class="form-group">
+                    <label for="profession_req2">Profession : </label>
+                    {{ form1.profession_mariee }}
+                </div>
+                <div class="form-group">
+                    <label for="domicile_req2">Adresse Couple :</label>
+                    {{ form1.domicile }}
+                </div>
+                <div class="form-group">
+                    <label for="date_mariage">Date Mariage : </Label>
+                    {{ form1.date_mariage }}
+                </div>
+                <div class="form-group">
+                    <label for="heure_mariage">Heure : </label>
+                    {{ form1.heure_mariage }}
+                </div>
+
+                <div class="form-group">
+                    <label for="lieu_mariage">Lieu : </label>
+                    {{ form1.lieu_mariage }}
+                </div>
+                <div class="form-group">
+                    <label for="BuretatCivile">Bureau Etat Civile : </label>
+                    {{ form1.BuretatCivile }}
+                </div>
+                <div class="form-group">
+                    <label for="Temoin1">Temoin1: </label>
+                    {{ form1.temoine1 }}
+                </div>
+                <div class="form-group">
+                    <label for="temoin2">Temoin2 : </label>
+                    {{ form1.temoine2 }}
+                </div>
+
+                <div>
+                    <button type="submit" name="submit">Submit </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+
+    <!-- JS  -->
+    <script>
+        document.querySelector("#id_date_mariage").setAttribute("type", "date");
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- /JS-->
+
+    {% endblock %}

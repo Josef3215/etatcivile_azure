@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>la boue </title>
+    <link rel="stylesheet" href="{% static 'CSS/base.css' %}">
+
+</head>
+
+<header class="main-head">
+
+    {% if user.is_authenticated %}
+
+
+    <nav>
+        <img src="{% static 'images/logo.svg' %}" id="logo">
+        <ul>
+            <li><a href="{% url 'ajouter' %}">Naissance</a></li>
+            <li><a href="{% url 'ajoumariage' %}">Mariage</a></li>
+            <li><a href="{% url 'ajoudeces' %}">Deces</a></li>
+            <li><a href="{% url 'rechercher_persone' %}">Acte Naissance</a></li>
+            <li><a href="{% url 'rechercher_mariage' %}">Acte Mariage</a></li>
+            <li><a href="{% url 'rechercher_deces' %}">Acte Deces</a></li>
+
+        </ul>
+        <ul>
+            <li id="user">{{ user.first_name }}, {{ user.last_name }}</li>
+            <li><a href="{% url 'statistique' %}" id="stat">Stats</a></li>
+            <li><a href="{% url 'logout' %}" id="Dec">Log Out</a></li>
+
+        </ul>
+    </nav>
+
+</header>
+
+<body>
+    {% csrf_token %}
+    {% block content %}
+    <div id="body-main">
+        <h1 id="titremain"> ETAT CIVIL</h1>
+        <div id="welcome-message">
+
+            <p>Bienvenue sur notre site de gestion de l'état civil.<br><br> Nous sommes fiers de
+                vous
+                offrir un
+                accès en ligne sécurisé et convivial aux services liés à l'état civil. <br>Ici, vous pouvez trouver des
+                informations sur les
+                documents nécessaires pour les différentes démarches, ainsi que les formulaires
+                en ligne pour les demandes de certificats de naissance, de mariage et de décès.<br>Nous espérons que
+                notre
+                site
+                vous
+                facilitera la vie et répondra à toutes vos questions.
+            </p>
+            <img src="{% static 'images/logo.svg' %}" id="logo-main">
+        </div>
+    </div>
+
+    {% endblock %}
+
+
+
+</body>
+{% else %}
+<a href="{% url 'login'  %}">Connexion</a>
+
+{% endif %}
+
+<footer>
+    <div class="footer-bottom">
+        <p> copyright &copy;2023 ETAT CIVIL. disigned by <span>H.M</span> </p>
+    </div>
+</footer>
+
+</html>

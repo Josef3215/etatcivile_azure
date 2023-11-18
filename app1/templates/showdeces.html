@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'CSS/show.css' %}">
+<div class="grille">
+    <div class="result">
+        <h4>Acte de Deces : </h4>
+        <ul class="info">
+
+            <li><label>Num Acte Deces :</label> {{data.id}}</li>
+            <li><label>Nom et Prenom :</label> {{data.personedeces}}</li>
+            <li><label>Annonceur :</label> {{data.annonceur}}</li>
+            <li><label>Date deces :</label> {{data.date_deces}}</li>
+            <li><label>Heure :</label> {{data.heure_deces}}</li>
+            <li><label>Lieu :</label> {{data.lieu_deces}}</li>
+            <li><label>Cause :</label> {{data.cause_deces}}</li>
+
+            <a href="{% url 'extrait_deces' data.id %}" id="print">imprimer</a>
+            <p> {{message}}</p>
+        </ul>
+    </div>
+</div>
+{% endblock %}

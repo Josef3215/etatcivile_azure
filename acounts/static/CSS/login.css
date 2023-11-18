@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    /*background: #f4f4f4;*/
+    background-image: url(../images/fond3.jpg);
+    background-size: cover;
+    background-position: right, left;
+    background-repeat: no-repeat, no-repeat;
+
+
+}
+
+#banniere {
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(30, 166, 27);
+    font-size: 4em;
+    padding: 10px;
+    margin: 20px auto;
+    width: 400px;
+    text-shadow: 2px 2px 5px #7e7c7c;
+
+}
+
+h2 {
+    text-align: center;
+    color: rgb(44, 46, 44);
+    font-size: 1.5em;
+    padding: 20px;
+    margin: 20px;
+}
+
+form {
+    width: 30%;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 0px 0px 10px 10px;
+}
+
+form p {
+    margin: 10px 0;
+    color: #666;
+}
+
+form label {
+    display: block;
+    margin: 3px;
+
+}
+
+form input {
+    height: 30px;
+    width: 100%;
+    padding: 5px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: rgb(30, 166, 27);
+    color: #fff;
+    border: 0;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    margin: 10px 0;
+    width: 100%;
+}

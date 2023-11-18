@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'CSS/search.css' %}">
+
+
+{% csrf_token %}
+<div class="grille">
+    <div class="elm-grid">
+        <form method="post" action="">
+            <h3> Update : </h3>
+            {% csrf_token %}
+
+            {{form.id}}
+            <div class="form-group">
+                <label> Nom :</label>
+                {{form.nom}}
+            </div>
+            <div class="form-group">
+                <label> Prenom :</label>
+                {{form.prenoms}}
+            </div>
+            <div class="form-group">
+                <label> Sexe :</label>
+                {{form.sexe}}
+            </div>
+            <div class="form-group">
+                <label> Date Naissance :</label>
+                {{form.date_naiss}}
+            </div>
+            <div class="form-group">
+                <label> Heure Naissance :</label>
+                {{form.heure_naiss}}
+            </div>
+            <div class="form-group">
+                <label> Pere :</label>
+                {{form.pere}}
+            </div>
+            <div class="form-group">
+                <label> Grand-pére :</label>
+                {{form.pere_pere}}
+            </div>
+            <div class="form-group">
+                <label> Mere :</label>
+                {{form.mere}}
+            </div>
+            <div class="form-group">
+                <label> Pere-Mere :</label>
+                {{form.pere_mere }}
+            </div>
+            <div class="form-group">
+                <label> Lieu Naissance :</label>
+                {{form.lieun}}
+            </div>
+            <div class="form-group">
+                <label> Bureau etat civil :</label>
+                {{form.BuretatCivile}}
+            </div>
+
+            <div class="form-group">
+                <br>
+                <input type="submit" value="Update">
+
+            </div>
+
+        </form>
+    </div>
+
+</div>
+<script>
+    document.querySelector("#id_date_naiss").setAttribute("type", "date");
+</script>
+{% endblock %}

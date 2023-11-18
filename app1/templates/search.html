@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'CSS/search.css' %}">
+<div class="grille">
+    <div class="elm-grid">
+        <form action='' method="get">
+            <h3> Rechercher Personne </h3>
+            <div class="form-group">
+                <label for="search"> Entrer le Nom :</label>
+                <input type="text" name="nom" id="search">
+            </div>
+            <div class="form-group">
+                <label for="search"> Entrer le Prenom : </label>
+                <input type="text" name="prenoms" id="search">
+            </div>
+            <button type="submit">Recherche </button>
+        </form>
+    </div>
+    <div class="elm-grid" id="result">
+
+        <h4> Resultat : </h4>
+        <ul class="info">
+            {% for persones in data %}
+
+            <li><label>ID :</label> {{persones.id}}</li>
+            <li><label>Nom :</label> {{persones.nom}}</li>
+            <li><label>Prenom :</label> {{persones.prenoms}}</li>
+            <li><label>Sexe :</label> {{persones.sexe}}</li>
+            <li><label>Date de Naissance :</label> {{persones.date_naiss}}</li>
+            <li><label>Heure :</label> {{persones.heure_naiss}}</li>
+            <li><label>Pére :</label> {{persones.pere}}</li>
+            <li><label>Grand-pére :</label> {{persones.pere_pere}}</li>
+            <li><label>Mere :</label> {{persones.mere}}</li>
+            <li><label>Pére de la Mere :</label> {{persones.pere_mere }}</li>
+            <li><label>Lieu de Naissance :</label> {{persones.lieun}}</li>
+            <li><label>BuretatCivile:</label> {{persones.BuretatCivile}}</li>
+
+            <a href="{% url 'extrait_pdf' persones.id %}" id="print">imprimer</a>
+            <a href="{% url 'update' persones.id %}" id="update">modifier</a>
+
+            {% if user.commune == persones.BuretatCivile.Commune %}
+            <a href="{% url 'edit' persones.id %}">modifier</a>
+            {% endif %}
+            {% endfor %}
+            <p> {{message}}</p>
+        </ul>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'CSS/Deces.css' %}">
+
+<div class="main">
+
+    <h1 id="titre"> Enregistrer Déces</h1>
+    <img src="{% static 'images/Deces.svg' %}" id="logo3">
+    <img src="{% static 'images/logo.svg' %}" id="logo2">
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="CONTENT">
+
+            <div class="form-group">
+                <label for="date-Deces">Date :</label>
+                {{ form2.date_deces}}
+            </div>
+
+            <div class="form-group">
+                <label for="Personne-Deces">Nom Prenom : </label>
+                {{form2.personedeces}}
+            </div>
+            <div class=" form-group">
+                <label for="Anonceur">Anonceur : </label>
+                {{form2.annonceur}}
+            </div>
+
+
+            <div class="form-group">
+                <label for="Huere-deces">Heure :</label>
+                {{ form2.heure_deces}}
+            </div>
+            <div class="form-group">
+                <label for="lieu-deces">Lieu : </label>
+                {{ form2.lieu_deces }}
+            </div>
+            <div class="form-group">
+                <label for="cause-deces">Cause Deces</label>
+                {{ form2.cause_deces }}
+            </div>
+            <div>
+                <button type="submit" name="submit">Submit </button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+<!-- JS  -->
+<script>
+    document.querySelector("#id_date_deces").setAttribute("type", "date");
+</script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- /JS-->
+
+{% endblock %}

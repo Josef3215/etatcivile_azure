@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'CSS/search.css' %}">
+<div class="grille">
+    <div class="elm-grid">
+        <form action='' method="get">
+            <h3> Rechercher Mariage </h3>
+            <div class="form-group">
+                <label for="search"> Numéro d'acte de Mariage </label>
+                <input type="text" name="num_mariage" id="search">
+            </div>
+            <button type="submit"> Recherche </button>
+        </form>
+    </div>
+
+    <div class="elm-grid" id="result">
+        <h4> Resultat: </h4>
+        <ul class="info">
+            {% for mariage in data %}
+
+            <li><label>Num Acte Mariage : </label>{{mariage.id}}</li>
+            <li><label>Marie :</label>{{mariage.marie}}</li>
+            <li><label>Date de Naissance :</label>{{mariage.marie.date_naiss}}</li>
+            <li><label>Profession : </label>{{mariage.profession_marie}}</li>
+            <li><label>Adresse de couple : </label>{{mariage.domicile}}</li>
+            <li><label>Mariée : </label>{{mariage.mariee}}</li>
+            <li><label>Date de Naissance : </label>{{mariage.mariee.date_naiss}}</li>
+            <li><label>Profession : </label>{{mariage.profession_mariee}}</li>
+            <li><label>Date Mariage : </label>{{mariage.date_mariage}}</li>
+            <li><label>Heure Mariage :</label>{{mariage.heure_mariage}}</li>
+            <li><label>Lieu Mariage </label>{{mariage.lieu_mariage}}</li>
+            <li><label>Bureau Etat Civile : </label>{{mariage.BuretatCivile}}</li>
+            <li><label>Témoin 1 :</label>{{mariage.temoine1}}</li>
+            <li><label>Témoin 2 : </label>{{mariage.temoine2}}</li>
+
+            <a href="{% url 'extrait_mariage' mariage.id %}" id="print">imprimer</a>
+
+            {% endfor %}
+            <p> {{message}}</p>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
